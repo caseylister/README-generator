@@ -136,3 +136,41 @@ const questions = [
     ];
 
     // TODO: Create a function to write README file
+    const writeFile = fileContent => {
+        return new Promise((resolve, reject) => {
+            fs.writeFile('./dist/README.md', fileContent, err => {
+                if (err) {
+                    reject(err);
+                    return;
+                }
+                resolve({
+                    ok: true,
+                    message: 'File created!'
+                });
+            });
+        });
+    };
+    
+    // TODO: Create a function to initialize app
+    function init() {
+        return inquirer.prompt(questions)
+        .then(readMeData => {
+            return readMeData;
+        })
+    };
+    
+    // Function call to initialize app
+    init()
+        .then(readMeData => {
+            console.log(readMeData);
+            return generateMarkdown(readMeData);
+        })
+        .then(pageMD => {
+            return writeFile(pageMD);
+        })
+        .then(writeFileResponse => {
+            console.log(writeFileResponse.message);
+        })
+        .catch(err => {
+            console.log(err);
+        })
