@@ -68,7 +68,7 @@ function renderContribute(confirmContribute, data) {
     * [Installation](#installation)
     * [Usage](#usage)
     ${renderLicenseTOC(data.license)}
-    * [Contribution](#contribution)
+    * [Contributions](#contributions)
     * [Tests](#tests)
     * [Questions](#questions)
     
