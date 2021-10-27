@@ -54,12 +54,57 @@ function renderContribute(confirmContribute, data) {
       return '';
     }
    }
-   
 
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
-`;
-}
 
-module.exports = generateMarkdown;
+// Function to generate markdown for README
+  function generateMarkdown(data) {
+    return `# ${data.title}
+  
+    # ${data.title}
+  
+    ## Contents
+  
+    * [Description](#description)
+    * [Installation](#installation)
+    * [Usage](#usage)
+    ${renderLicenseTOC(data.license)}
+    * [Contribution](#contribution)
+    * [Tests](#tests)
+    * [Questions](#questions)
+    
+    ## [Description](#Contents)
+  
+    ${data.description}
+  
+    ## [Installation](#Contents)
+  
+    ${data.installation}
+  
+    ## [Usage](#Contents)
+  
+    ${data.usage}
+  
+    For more information on Markdown syntax and how to add screenshots, visit the following website:
+    [Markdown Guide](https://www.markdownguide.org/)
+  
+    ${renderLicenseSection(data.license)}
+  
+    ## [Contributions](#Contents)
+  
+    ${renderContribute(data.confirmContribute, data.contribution)}
+  
+    ## [Tests](#Contents)
+  
+    ${data.test}
+  
+    ## [Questions](#Contents)
+  
+    You can contact me by clicking the following links!
+  
+    [Email: ${data.email}](mailto:${data.email})
+  
+    [GitHub](https://github.com/${data.username})
+  `;
+  }
+  
+  module.exports = generateMarkdown;
